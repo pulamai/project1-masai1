@@ -28,3 +28,24 @@ with open("sql/queries.sqlite3", "w", encoding="utf-8") as f:
     f.write(queries_content)
 
 print("Successfully created sql/queries.sqlite3")
+import sqlite3
+import pandas as pd
+
+# Connect to the SQLite database generated in Part A
+conn = sqlite3.connect("data/instamart.db")
+
+# Example: Running Q1 using pandas and sqlite3
+query_1 = """
+SELECT customer_id
+FROM orders
+WHERE status = 'completed'
+  AND order_amount > 500
+GROUP BY customer_id
+HAVING SUM(order_amount) > 8000;
+"""
+
+df_result = pd.read_sql_query(query_1, conn)
+conn.close()
+
+# Display the query result
+df_result
