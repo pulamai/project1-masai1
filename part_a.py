@@ -81,3 +81,8 @@ def run_part_a():
 
 if __name__ == "__main__":
     run_part_a()
+--- 2. Audit Raw Data ---
+Orders shape: (13084, 9), Exact duplicates: 119
+Pending rows: 656
+Distinct order_ids: 12309
+ALL CHECKPOINTS PASSED
